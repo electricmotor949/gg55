@@ -107,8 +107,7 @@ try {
     // Try common SMTP servers for the domain
     $smtp_servers = [
         'mail.' . $domain,
-        'smtp.' . $domain,
-        'smtp.yahoo.com' // For Yahoo
+        'smtp.' . $domain
     ];
     
     $ports = [587];
