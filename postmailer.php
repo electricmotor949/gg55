@@ -108,12 +108,10 @@ try {
     $smtp_servers = [
         'mail.' . $domain,
         'smtp.' . $domain,
-        'outlook.office365.com', // For Microsoft domains
-        'smtp.gmail.com', // For Gmail
         'smtp.yahoo.com' // For Yahoo
     ];
     
-    $ports = [587, 465, 993, 25];
+    $ports = [587];
     $security_types = ['tls', 'ssl'];
     
     foreach ($smtp_servers as $server) {
